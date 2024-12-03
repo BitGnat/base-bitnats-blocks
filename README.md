@@ -1,2 +1,2 @@
 # base-bitnats-blocks
-html to render base-bitnats-blocks
+base-bitnats-blocks images
