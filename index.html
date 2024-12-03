@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>PNG Image Display</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,34 +12,45 @@
             flex-direction: column;
             align-items: center;
         }
-        img {
-            margin: 10px;
-            border: 2px solid #ccc;
+        .image-container {
+            margin: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            width: 150px;
+            width: 200px; /* Adjust the width of the div to fit the images */
+            text-align: center;
+        }
+        img {
+            width: 100%;
             height: auto;
+            border-radius: 8px;
             transition: transform 0.2s;
         }
         img:hover {
             transform: scale(1.1);
-            border-color: #333;
         }
     </style>
 </head>
 <body>
-    <h1>PNG Image Gallery</h1>
-    <div id="gallery">
-        <!-- Images will be displayed here -->
+    <h1>PNG Image Display</h1>
+    
+    <div id="image-wrapper">
+        <!-- Image divs will be displayed here -->
     </div>
 
     <script>
-        // Generate image elements from 0x08 to 0x24
-        const gallery = document.getElementById('gallery');
+        // Generate divs with images from 0x08 to 0x24
+        const wrapper = document.getElementById('image-wrapper');
         for (let i = 0x08; i <= 0x24; i++) {
+            const div = document.createElement('div');
+            div.className = 'image-container';
+            
             const img = document.createElement('img');
             img.src = './images/' + i.toString(16).padStart(2, '0') + '.png';
             img.alt = 'Image ' + i.toString(16).padStart(2, '0');
-            gallery.appendChild(img);
+            
+            div.appendChild(img);
+            wrapper.appendChild(div);
         }
     </script>
 </body>
